@@ -1,0 +1,70 @@
+return {
+  'dmtrKovalenko/fff.nvim',
+  build = function()
+    --   -- this will download prebuild binary or try to use existing rustup toolchain to build from source
+    --   -- (if you are using lazy you can use gb for rebuilding a plugin if needed)
+    require("fff.download").download_or_build_binary()
+  end,
+  -- if you are using nixos
+  -- build = "nix run .#release",
+  opts = {                -- (optional)
+    debug = {
+      enabled = true,     -- we expect your collaboration at least during the beta
+      show_scores = true, -- to help us optimize the scoring system, feel free to share your scores!
+    },
+  },
+  -- No need to lazy-load with lazy.nvim.
+  -- This plugin initializes itself lazily.
+  lazy = false,
+  config = function()
+    local fff = require('fff')
+    fff.setup {
+      title = "FileSearch",
+      prompt = " ",
+      layout = {
+        height = 0.75,
+        width = 0.7,
+        prompt_position = 'bottom',
+        preview_position = 'right',
+        preview_size = 0.5,
+        show_scrollbar = false,
+      },
+      keymaps = {
+        close = '<C-c>',
+        select = '<CR>',
+        select_split = '<C-x>',
+        select_vsplit = '<C-v>',
+        select_tab = '<C-t>',
+        move_up = { '<Up>', '<C-p>' },
+        move_down = { '<Down>', '<C-n>' },
+        preview_scroll_up = '<C-u>',
+        preview_scroll_down = '<C-d>',
+        toggle_debug = '<F2>',
+      },
+      hl = {
+        matched = 'FFFMatched',
+        active_file = 'FFFVisual',
+        grep_match = 'FFFMatched',
+      },
+    }
+
+    vim.keymap.set('n', '<leader>ff', function() fff.find_files() end, {})
+    vim.keymap.set('n', '<leader>fg', function()
+      fff.live_grep({
+        grep = {
+          modes = { 'plain', 'fuzzy' }
+        }
+      })
+    end, {})
+
+    -- Keep the old Telescope muscle-memory for help.
+    vim.keymap.set('n', '<leader>fh', function()
+      -- fff.nvim doesn't provide help-tags picker; use the built-in help UI.
+      vim.cmd('help')
+    end, {})
+    vim.keymap.set('n', '<C-p>', function() fff.find_in_git_root({ no_ignore = true }) end, {})
+    vim.keymap.set("n", "<space>fc", function()
+      fff.find_files_in_dir("/home/aaronshahriari/github/.dotfiles/nvim/")
+    end)
+  end
+}

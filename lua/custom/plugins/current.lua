@@ -1,0 +1,82 @@
+-- local paths = {
+--   vim.fn.expand("~/.config/current/personal.lua"),
+--   vim.fn.expand("~/.config/current/theme/personal.lua"),
+--   vim.fn.expand("~/.config/current/neovim.lua"),
+--   vim.fn.expand("~/.config/current/theme/neovim.lua"),
+-- }
+--
+-- local function read_spec()
+--   for _, path in ipairs(paths) do
+--     if vim.uv.fs_stat(path) then
+--       local ok, spec = pcall(dofile, path)
+--       if ok and type(spec) == "table" then
+--         return spec, path
+--       end
+--
+--       vim.schedule(function()
+--         vim.notify(("Failed to load %s: %s"):format(path, tostring(spec)), vim.log.levels.WARN)
+--       end)
+--       return {}, path
+--     end
+--   end
+--
+--   return {}, nil
+-- end
+--
+-- local function normalize_spec(raw, source_path)
+--   if type(raw) ~= "table" then
+--     return {}
+--   end
+--
+--   if source_path and vim.endswith(source_path, "personal.lua") then
+--     return raw
+--   end
+--
+--   -- Shorthand format:
+--   -- return { plugin = "bjarneo/vantablack.nvim", colorscheme = "vantablack" }
+--   local plugin = raw.plugin or raw.repo
+--   local scheme = raw.colorscheme or raw.scheme
+--
+--   if plugin and scheme then
+--     return {
+--       {
+--         plugin,
+--         lazy = false,
+--         priority = raw.priority or 1000,
+--         config = function()
+--           vim.cmd.colorscheme(scheme)
+--         end,
+--       },
+--     }
+--   end
+--
+--   local out = {}
+--   local colorscheme
+--
+--   for _, item in ipairs(raw) do
+--     if type(item) == "table" and item[1] == "LazyVim/LazyVim" then
+--       if item.opts and type(item.opts) == "table" and type(item.opts.colorscheme) == "string" then
+--         colorscheme = item.opts.colorscheme
+--       end
+--     else
+--       out[#out + 1] = item
+--     end
+--   end
+--
+--   if colorscheme then
+--     pcall(vim.cmd.colorscheme, colorscheme)
+--     vim.api.nvim_create_autocmd("User", {
+--       pattern = "VeryLazy",
+--       once = true,
+--       callback = function()
+--         pcall(vim.cmd.colorscheme, colorscheme)
+--       end,
+--     })
+--   end
+--
+--   return out
+-- end
+--
+-- local raw, source_path = read_spec()
+-- return normalize_spec(raw, source_path)
+return {}
