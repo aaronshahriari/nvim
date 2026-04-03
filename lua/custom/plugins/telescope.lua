@@ -4,11 +4,7 @@ return {
   config = function()
     local telescope = require("telescope")
     telescope.setup {
-      extensions = {
-        orgmode = {
-          max_depth = 2
-        }
-      },
+      extensions = {},
       pickers = {
         colorscheme = {
           enable_preview = true
@@ -30,19 +26,25 @@ return {
         preview = {
           treesitter = true,
         },
+        path_display = { "smart" },
         layout_strategy = 'horizontal',
-        layout_config = { height = 0.75, width = 0.75 },
+        -- layout_config = { height = 0.75, width = 0.75 }, -- OLD
+        layout_config = {
+          horizontal = {
+            preview_width = 0.6
+          },
+        },
       },
     }
 
-    -- local builtin = require('telescope.builtin')
-    -- vim.keymap.set('n', '<leader>ff', function() builtin.find_files() end, {})
-    -- vim.keymap.set('n', '<C-p>', function() builtin.git_files({ no_ignore = true }) end, {})
-    -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    -- vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-    -- -- vim.keymap.set('n', '<C-b>', function() builtin.grep_string({ search = "FIXME:" }) end, {})
-    -- vim.keymap.set("n", "<leader>fc", function()
-    --   builtin.find_files { cwd = "/home/aaronshahriari/github/.dotfiles/nvim/" }
-    -- end)
+    local builtin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader>ff', function() builtin.find_files() end, {})
+    vim.keymap.set('n', '<C-p>', function() builtin.git_files({ no_ignore = true }) end, {})
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags)
+    -- vim.keymap.set('n', '<C-b>', function() builtin.grep_string({ search = "FIXME:" }) end, {})
+    vim.keymap.set("n", "<leader>fc", function()
+      builtin.find_files { cwd = "/home/aaronshahriari/github/.dotfiles/nvim/" }
+    end)
   end
 }

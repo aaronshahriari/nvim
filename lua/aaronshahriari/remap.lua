@@ -42,7 +42,7 @@ vim.keymap.set("n", "<leader>dby", ":tabnew | DBUI<CR>", { noremap = true, silen
 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 
 -- used to single file diagnostics in qflist
--- vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
+vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
 -- Map to change split size
 vim.keymap.set("n", "<C-Left>", "<C-w>10<")
