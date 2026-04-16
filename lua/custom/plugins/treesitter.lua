@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    local tree = require("nvim-treesitter.configs")
+    local tree = require("nvim-treesitter")
     tree.setup {
       ensure_installed = {
         "elixir",
