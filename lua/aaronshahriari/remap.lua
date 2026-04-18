@@ -81,7 +81,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]])
 
 -- run tmux inside of vim
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/share/aaron/tmux-sessionizer<CR>")
 -- vim.keymap.set("n", "<C-g>", "<cmd>silent !tmux neww ~/.local/bin/tmux-sessionizer -s 0<CR>")
 -- vim.keymap.set("n", "<C-a>", "<cmd>silent !~/.local/bin/tmux-sessionizer -s 0 --vsplit --split-size 35<CR>")
 
