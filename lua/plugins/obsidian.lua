@@ -1,4 +1,4 @@
-return {
+return function()
   -- "obsidian-nvim/obsidian.nvim",
   -- version = "*", -- use latest release, remove to use latest commit
   -- -- ft = "markdown", -- commented to use everywhere
@@ -157,4 +157,4 @@ return {
   --     end,
   --   })
   -- end
-}
+end

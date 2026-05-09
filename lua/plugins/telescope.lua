@@ -1,7 +1,9 @@
-return {
-  "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/nvim-telescope/telescope.nvim" },
+  })
+
     local telescope = require("telescope")
     telescope.setup {
       extensions = {},
@@ -46,5 +48,4 @@ return {
     vim.keymap.set("n", "<leader>fc", function()
       builtin.find_files { cwd = "/home/aaronshahriari/github/.dotfiles/nvim/" }
     end)
-  end
-}
+end

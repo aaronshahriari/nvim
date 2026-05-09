@@ -1,7 +1,9 @@
-return {
-  'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/nvim-lualine/lualine.nvim" },
+  })
+
     local colors = {
       blue   = '#89b4fa',
       cyan   = '#94e2d5',
@@ -44,7 +46,7 @@ return {
       },
     }
 
-    require('lualine').setup {
+    require("lualine").setup({
       options = {
         -- theme = bubbles_theme,
         theme = basic_theme,
@@ -65,7 +67,7 @@ return {
         },
         lualine_x = {},
         lualine_y = { 'filetype' },
-        lualine_z = { 'location', require("opencode").statusline, },
+        lualine_z = { 'location' },
       },
       inactive_sections = {
         lualine_a = {},
@@ -85,6 +87,5 @@ return {
       },
       tabline = {},
       extensions = {},
-    }
-  end
-}
+    })
+end

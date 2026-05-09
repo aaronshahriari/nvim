@@ -1,4 +1,4 @@
-return {
+return function()
   -- "express_line.nvim",
   -- dev = true,
   -- dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
@@ -181,4 +181,4 @@ return {
   --     end,
   --   })
   -- end,
-}
+end

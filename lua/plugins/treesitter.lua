@@ -1,7 +1,8 @@
-return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  })
+
     local tree = require("nvim-treesitter")
     tree.setup {
       ensure_installed = {
@@ -35,5 +36,4 @@ return {
         disable = { "html" },
       }
     }
-  end
-}
+end

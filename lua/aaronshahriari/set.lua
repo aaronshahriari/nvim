@@ -7,14 +7,6 @@ vim.opt.guicursor = {
   "n-v-c:block-Cursor/lCursor"
 }
 
--- fold ellipsis
--- vim.opt.foldcolumn = "1"
--- vim.opt.fillchars = {
---   foldopen = "▾",
---   foldclose = "▸",
---   foldsep = " ",
--- }
-
 -- border set global
 vim.o.winborder = 'single'
 
@@ -141,17 +133,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 local uv = vim.uv or vim.loop; local p = os.getenv("NVIM_EXTRA"); if p and uv.fs_stat(p) then dofile(p) end
-
--- org-mode colors
-vim.api.nvim_create_autocmd('ColorScheme', {
-  pattern = '*',
-  callback = function()
-    -- Define own colors
-    vim.api.nvim_set_hl(0, '@org.agenda.deadline', { fg = '#FFAAAA' })
-    vim.api.nvim_set_hl(0, '@org.agenda.scheduled', { fg = '#EBFFEB' })
-    vim.api.nvim_set_hl(0, '@org.keyword.done', { fg = '#f538ff' })
-    vim.api.nvim_set_hl(0, '@org.keyword.todo', { fg = '#ffff36' })
-    -- Link to another highlight group
-    vim.api.nvim_set_hl(0, '@org.agenda.scheduled_past', { link = 'Statement' })
-  end
-})

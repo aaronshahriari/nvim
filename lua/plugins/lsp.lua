@@ -1,10 +1,12 @@
-return {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    'saghen/blink.cmp',
-    { "j-hui/fidget.nvim", opts = {} },
-  },
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/neovim/nvim-lspconfig" },
+    { src = "https://github.com/saghen/blink.cmp" },
+    { src = "https://github.com/j-hui/fidget.nvim" },
+  })
+
+  require("fidget").setup({})
+
     -- local lspconfig = require("lspconfig")
 
     -- proper context for diagnostics
@@ -180,5 +182,4 @@ return {
 
     -- MD
     vim.lsp.enable('markdown_oxide')
-  end
-}
+end

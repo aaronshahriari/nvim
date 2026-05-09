@@ -1,8 +1,8 @@
-return {
-  "NickvanDyke/opencode.nvim",
-  dependencies = {
-  },
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/NickvanDyke/opencode.nvim" },
+  })
+
     ---@type opencode.Opts
     vim.g.opencode_opts = {
       port = 11435,
@@ -35,5 +35,4 @@ return {
     -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o…".
     vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
     vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
-  end,
-}
+end

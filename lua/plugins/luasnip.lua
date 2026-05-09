@@ -1,8 +1,8 @@
-return {
-  "L3MON4D3/LuaSnip",
-  version = "v2.*",
-  build = "make install_jsregexp",
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/L3MON4D3/LuaSnip", version = "v2.5.0", build = "make install_jsregexp" },
+  })
+
     local ls = require("luasnip")
     local s = ls.snippet
     local t = ls.text_node
@@ -53,5 +53,4 @@ return {
     --     ls.expand()
     --   end
     -- end, { desc = "Expand snippet" })
-  end,
-}
+end

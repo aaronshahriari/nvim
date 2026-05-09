@@ -1,9 +1,10 @@
-return {
-  "MeanderingProgrammer/render-markdown.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-  ---@module "render-markdown"
-  ---@type render.md.UserConfig
-  config = function()
+return function()
+  vim.pack.add({
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
+  })
+
     local render = require("render-markdown")
     render.setup({
       heading = { position = 'inline', width = 'block' },
@@ -117,5 +118,4 @@ return {
         },
       },
     })
-  end
-}
+end

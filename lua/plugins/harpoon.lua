@@ -1,9 +1,10 @@
-return {
-  "ThePrimeagen/harpoon",
-  branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
-    local harpoon = require("harpoon")
+return function()
+  vim.pack.add({
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/ThePrimeagen/harpoon", version = "harpoon2" },
+  })
+
+  local harpoon = require("harpoon")
 
     harpoon:setup({
       settings = {
@@ -27,6 +28,5 @@ return {
     vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
     vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
 
-    vim.cmd [[ autocmd Filetype harpoon setlocal cursorline ]]
-  end
-}
+  vim.cmd([[autocmd Filetype harpoon setlocal cursorline]])
+end
