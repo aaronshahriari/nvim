@@ -20,6 +20,9 @@ vim.keymap.set('n', '<S-ScrollWheelDown>', '10zl', { silent = true })
 -- I just need this fr
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+-- jq to the max
+vim.keymap.set("n", "<leader>j", ":%!jq .<CR>", { silent = true })
+
 -- Map these to move through splits
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
@@ -30,13 +33,11 @@ vim.keymap.set("n", "<C-T>", "<C-w>T")
 -- Map these to move through tabs
 vim.keymap.set("n", "<Left>", "gT")
 vim.keymap.set("n", "<Right>", "gt")
+vim.keymap.set("n", "<M-n>", "gt")
 
 -- Map these to move through tabs
 vim.keymap.set("n", "<S-Left>", function() vim.cmd("tabmove -1") end)
 vim.keymap.set("n", "<S-Right>", function() vim.cmd("tabmove +1") end)
-
--- close entire tab
-vim.keymap.set("n", "<leader>dby", ":tabnew | DBUI<CR>", { noremap = true, silent = true })
 
 -- used to see diagnostics
 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)

@@ -2,16 +2,20 @@ require("plugins.blink")()
 require("plugins.catppuccin")()
 require("plugins.cloak")()
 require("plugins.conform")()
+-- require("plugins.copilot")() --work
 require("plugins.dadbod")()
--- require("plugins.dbee")() -- added from work config
+-- require("plugins.dap-view")() -- work
+-- require("plugins.dap")() -- work
+-- require("plugins.dbee")() -- work
 -- require("plugins.fff")()
 require("plugins.fugitive")()
 require("plugins.harpoon")()
 require("plugins.hlsearch")()
--- require("plugins.kulala")() -- added from work config
+-- require("plugins.kulala")() -- work
 require("plugins.lsp")()
 require("plugins.lualine")()
 require("plugins.luasnip")()
+require("plugins.mason")()
 require("plugins.obsidian")()
 require("plugins.oil")()
 -- require("plugins.opencode")()
