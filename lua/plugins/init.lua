@@ -3,10 +3,12 @@ require("plugins.catppuccin")()
 require("plugins.cloak")()
 require("plugins.conform")()
 require("plugins.dadbod")()
+-- require("plugins.dbee")() -- added from work config
 -- require("plugins.fff")()
 require("plugins.fugitive")()
 require("plugins.harpoon")()
 require("plugins.hlsearch")()
+-- require("plugins.kulala")() -- added from work config
 require("plugins.lsp")()
 require("plugins.lualine")()
 require("plugins.luasnip")()

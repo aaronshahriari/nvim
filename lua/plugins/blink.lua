@@ -4,26 +4,14 @@ return function()
   })
 
   require("blink.cmp").setup({
-    enabled = function()
-      local filetype = vim.bo.filetype
-      if filetype == "org-roam-select" then
-        return false
-      end
-      return true
-    end,
     snippets = { preset = "luasnip" },
     sources = {
       default = { "lsp", "path", "snippets" },
       per_filetype = {
-        sql = { "orgmode", "snippets", "dadbod", "buffer" },
+        sql = { "snippets", "dadbod", "buffer" },
       },
       providers = {
         dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-        orgmode = {
-          name = "Orgmode",
-          module = "orgmode.org.autocompletion.blink",
-          fallbacks = { "buffer" },
-        },
       },
     },
     keymap = { preset = "default" },

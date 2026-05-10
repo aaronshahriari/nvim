@@ -1,2 +1,7 @@
 # NeoVim Setup
-New `vim.pack` setup
+- Using vim.pack
+
+## Todo
+- add Mason nvim
+- Create some DB manager
+- Add cool work utilities

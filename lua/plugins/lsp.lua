@@ -41,6 +41,9 @@ return function()
     }
     vim.lsp.enable('tinymist')
 
+    -- JAVA
+    vim.lsp.enable('jdtls')
+
     -- TYPESCRIPT
     vim.lsp.enable('ts_ls')
 
