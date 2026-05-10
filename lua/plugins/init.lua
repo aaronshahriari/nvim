@@ -7,6 +7,7 @@ require("plugins.dadbod")()
 -- require("plugins.dap-view")() -- work
 -- require("plugins.dap")() -- work
 -- require("plugins.dbee")() -- work
+require("plugins.dblite")()
 -- require("plugins.fff")()
 require("plugins.fugitive")()
 require("plugins.harpoon")()
