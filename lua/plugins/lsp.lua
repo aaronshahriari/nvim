@@ -33,6 +33,13 @@ return function()
   })
 
   -- QUICKSHELL
+  local qs_path = vim.fn.exepath('quickshell')
+  if qs_path ~= '' then
+    local qs_prefix = vim.fn.resolve(qs_path):match('(.*)/bin/quickshell$')
+    vim.lsp.config('qmlls', {
+      cmd = { 'qmlls', '-I', qs_prefix .. '/lib/qt-6/qml' },
+    })
+  end
   vim.lsp.enable('qmlls')
 
   -- TYPST
