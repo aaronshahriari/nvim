@@ -1,25 +1,32 @@
+-- require("plugins.cloak")()
+-- require("plugins.copilot")() --work
+-- require("plugins.dbee")() -- work
+-- require("plugins.fff")()
+-- require("plugins.opencode")()
+require("plugins.azdo")()
 require("plugins.blink")()
 require("plugins.catppuccin")()
-require("plugins.cloak")()
+require("plugins.confluence")()
 require("plugins.conform")()
--- require("plugins.copilot")() --work
 require("plugins.dadbod")()
--- require("plugins.dap-view")() -- work
--- require("plugins.dap")() -- work
--- require("plugins.dbee")() -- work
--- require("plugins.dblite")()
--- require("plugins.fff")()
+require("plugins.dap")()
+require("plugins.dap-view")()
+require("plugins.dblite")()
+require("plugins.diffs")()
+-- require("plugins.diffview")()
 require("plugins.fugitive")()
 require("plugins.harpoon")()
 require("plugins.hlsearch")()
--- require("plugins.kulala")() -- work
+require("plugins.kulala")()
 require("plugins.lsp")()
 require("plugins.lualine")()
 require("plugins.luasnip")()
 require("plugins.mason")()
+require("plugins.md_pdf")()
 require("plugins.obsidian")()
 require("plugins.oil")()
--- require("plugins.opencode")()
+require("plugins.present")()
+require("plugins.redis")()
 require("plugins.render-markdown")()
 require("plugins.statusline")()
 require("plugins.surround")()

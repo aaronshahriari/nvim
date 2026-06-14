@@ -1,5 +1,5 @@
 return function()
-  vim.pack.add ({
+  vim.pack.add({
     { src = "https://github.com/laytan/cloak.nvim" }
   })
   require("cloak").setup({

@@ -1,6 +1,6 @@
 return function()
   vim.pack.add({
-    { src = "https://github.com/igorlfs/nvim-dap-view", version = "1.*" },
+    { src = "https://github.com/igorlfs/nvim-dap-view", version = "v1.2.0" },
   })
 
   require("dap-view").setup({
@@ -71,7 +71,7 @@ return function()
         format = function(name, lnum, path)
           return {
             { text = name, separator = " " },
-            { text = path, hl = "FileName", separator = ":" },
+            { text = path, hl = "FileName",  separator = ":" },
             { text = lnum, hl = "LineNumber" },
           }
         end,

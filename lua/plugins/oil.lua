@@ -4,6 +4,16 @@ return function()
     { src = "https://github.com/stevearc/oil.nvim" },
   })
   local oil = require("oil")
+  -- Open the entry under the cursor in zathura (detached). Handy for the
+  -- ../pdf/ output from md-pdf.nvim.
+  local function open_in_zathura()
+    local entry = oil.get_cursor_entry()
+    if not entry or entry.type ~= "file" then
+      return
+    end
+    local path = oil.get_current_dir() .. entry.name
+    vim.system({ "zathura", path }, { detach = true })
+  end
   oil.setup({
     default_file_explorer = true,
     columns = {
@@ -20,6 +30,7 @@ return function()
       ["<C-q>"] = "actions.preview",
       ["<C-r>"] = "actions.refresh",
       ["-"] = "actions.parent",
+      ["<space>z"] = { callback = open_in_zathura, desc = "Open file in zathura" },
     },
     use_default_keymaps = false,
     float = {

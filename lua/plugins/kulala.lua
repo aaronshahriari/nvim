@@ -25,9 +25,14 @@ return function()
 
   local kl = require("kulala")
   kl.setup({
+    variables_scope = "request",
     global_keymaps = true,
     global_keymaps_prefix = "<leader>R",
     kulala_keymaps_prefix = "",
+    kulala_keymaps = {
+      ["Previous tab"] = false, -- disable <C-h>
+      ["Next tab"] = false, -- disable <C-l>
+    },
     ui = {
       win_opts = {
         wo = { wrap = false, foldmethod = "manual" },

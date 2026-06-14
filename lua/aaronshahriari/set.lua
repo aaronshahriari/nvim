@@ -44,7 +44,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scroll = 25
+-- vim.opt.scroll = 25
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
@@ -109,16 +109,17 @@ autocmd("BufEnter", {
   end,
 })
 
--- clipboard config
+-- clipboard config (macOS pasteboard)
+-- vim.opt.clipboard = "unnamedplus"
 vim.g.clipboard = {
-  name = "wl-clipboard",
+  name = "pbcopy",
   copy = {
-    ["+"] = "wl-copy",
-    ["*"] = "wl-copy",
+    ["+"] = "pbcopy",
+    ["*"] = "pbcopy",
   },
   paste = {
-    ["+"] = "wl-paste",
-    ["*"] = "wl-paste",
+    ["+"] = "pbpaste",
+    ["*"] = "pbpaste",
   },
   cache_enabled = 0,
 }

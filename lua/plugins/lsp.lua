@@ -32,6 +32,9 @@ return function()
     end,
   })
 
+  -- json
+  vim.lsp.enable('jsonls')
+
   -- QUICKSHELL
   local qs_path = vim.fn.exepath('quickshell')
   if qs_path ~= '' then
@@ -106,7 +109,7 @@ return function()
   vim.lsp.enable('elixirls')
 
   -- PYTHON
-  vim.lsp.enable('pylsp')
+  vim.lsp.enable('pyright')
 
   -- ZIG
   vim.lsp.config('zls', {

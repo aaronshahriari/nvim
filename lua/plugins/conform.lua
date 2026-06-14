@@ -8,6 +8,7 @@ return function()
       lua = { "stylua" },
       go = { "gofmt" },
       nix = { "nixfmt" },
+      json = { "prettier" },
       -- sql = { "sql_formatter" },
       zig = { "zigfmt" },
       elixir = { "mix" },
