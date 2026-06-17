@@ -18,7 +18,7 @@ return function()
       enable = false
     },
     picker = {
-      name = "telescope",
+      name = "telescope.nvim",
     },
     note_id_func = function(title)
       if title ~= nil then

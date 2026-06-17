@@ -23,6 +23,7 @@ return function()
         "%.git/",
         "%.jpg",
         "%.png",
+        "%.pdf",
         "%target/",
       },
       preview = {
