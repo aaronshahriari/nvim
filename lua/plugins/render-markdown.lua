@@ -7,6 +7,7 @@ return function()
 
   local render = require("render-markdown")
   render.setup({
+    file_types = { 'markdown', 'kulala_ui' },
     heading = {
       position = 'inline',
       width = 'block'
@@ -82,7 +83,7 @@ return function()
         'RenderMarkdownQuote6',
       },
     },
-    pipe_table = { enabled = false, },
+    pipe_table = { enabled = true, },
     link = {
       enabled = true,
       icon = ' ',
