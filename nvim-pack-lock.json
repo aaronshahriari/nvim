@@ -18,7 +18,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "dblite.nvim": {
-      "rev": "0cf2f87b7548315237176ffd6934ff77a650938a",
+      "rev": "c279b3163d6877e06d1968aa715966bf504090a6",
       "src": "https://github.com/aaronshahriari/dblite.nvim"
     },
     "diffs.nvim": {
@@ -130,6 +130,10 @@
     "render-markdown.nvim": {
       "rev": "f422cb5c6855f150e2ddcfaf44e7157b98b34f6a",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
+    "telescope-ui-select.nvim": {
+      "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
+      "src": "https://github.com/nvim-telescope/telescope-ui-select.nvim"
     },
     "telescope.nvim": {
       "rev": "9377230aa5305d9e9aca4ed8dadf1070fb4aa9fc",

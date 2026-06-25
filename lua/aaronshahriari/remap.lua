@@ -91,20 +91,20 @@ vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
--- define a function for creating a small terminal
-vim.keymap.set("n", "<leader>st", function()
-  vim.cmd.new()
-  vim.cmd.term()
-  vim.cmd.wincmd("J")
-  local total_height = vim.api.nvim_list_uis()[1].height
-  vim.api.nvim_win_set_height(0, math.floor(total_height * 0.3))
-end)
-
--- define a function for creating a split terminal
-vim.keymap.set("n", "<leader>t", function()
-  vim.cmd.new()
-  vim.cmd.term()
-  vim.cmd.wincmd("L")
-  local total_width = vim.api.nvim_list_uis()[1].width
-  vim.api.nvim_win_set_width(0, math.floor(total_width * 0.4))
-end)
+-- -- define a function for creating a small terminal
+-- vim.keymap.set("n", "<leader>st", function()
+--   vim.cmd.new()
+--   vim.cmd.term()
+--   vim.cmd.wincmd("J")
+--   local total_height = vim.api.nvim_list_uis()[1].height
+--   vim.api.nvim_win_set_height(0, math.floor(total_height * 0.3))
+-- end)
+--
+-- -- define a function for creating a split terminal
+-- vim.keymap.set("n", "<leader>t", function()
+--   vim.cmd.new()
+--   vim.cmd.term()
+--   vim.cmd.wincmd("L")
+--   local total_width = vim.api.nvim_list_uis()[1].width
+--   vim.api.nvim_win_set_width(0, math.floor(total_width * 0.4))
+-- end)

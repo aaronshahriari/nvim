@@ -20,18 +20,18 @@ return function()
 
   local dblite = require("dblite")
   dblite.setup({
-    split_dir     = "horizontal",
-    split_size    = { width = 80, height = 17 },
-    page_size     = 100,
-    flash_timeout = 1500,
-    max_rows      = 10000,
-    max_col_width = 50,
-    binds_split   = {
+    split_dir         = "horizontal",
+    split_size        = { width = 80, height = 17 },
+    page_size         = 100,
+    flash_timeout     = 1500,
+    max_rows          = 10000,
+    max_col_width     = 50,
+    binds_split       = {
       style  = 'float', -- 'vertical' | 'horizontal'
       width  = 80,      -- columns; used when split_dir = 'vertical'. 0 = let nvim decide.
       height = 30,      -- rows; used when split_dir = 'horizontal'. 0 = let nvim decide.
     },
-    style         = {
+    style             = {
       dbout = {
         cursorline = false, -- highlight the line under the cursor
         -- Status line sections. Each entry: { "item", sep = "…", hl = "HlGroup" }
@@ -45,7 +45,14 @@ return function()
         },
       },
     },
-    keymaps       = {
+    connection_picker = 'telescope', -- other opt: panel
+    telescope_picker  = {
+      preview       = true,
+      width         = 0.5,
+      height        = 0.55,
+      preview_width = 0.5,
+    },
+    keymaps           = {
       dbout = { next = "L", prev = "H", cancel = "<C-c>" },
       editor = { binds = false },
     },

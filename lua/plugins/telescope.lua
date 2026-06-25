@@ -2,11 +2,18 @@ return function()
   vim.pack.add({
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    { src = "https://github.com/nvim-telescope/telescope-ui-select.nvim" },
   })
 
   local telescope = require("telescope")
   telescope.setup {
-    extensions = {},
+    extensions = {
+      -- Route vim.ui.select() through Telescope so any picker (e.g. azdo's
+      -- :AzdoLink work-item list) becomes fuzzy-filterable as you type.
+      ["ui-select"] = {
+        require("telescope.themes").get_dropdown({}),
+      },
+    },
     pickers = {
       colorscheme = {
         enable_preview = true
@@ -39,6 +46,8 @@ return function()
       },
     },
   }
+
+  telescope.load_extension("ui-select")
 
   local builtin = require('telescope.builtin')
   vim.keymap.set('n', '<leader>ff', function() builtin.find_files() end, {})

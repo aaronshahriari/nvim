@@ -31,6 +31,12 @@ return function()
   pcall(vim.cmd, "helptags " .. dir .. "/doc")
 
   -- Entry point: `:Azdo` (status), `:Azdo <id|url|sha>`. In-buffer maps are set
-  -- automatically; `g?` lists them. Add a launcher of your choosing, e.g.:
-  -- vim.keymap.set("n", "<leader>az", "<cmd>Azdo<cr>", { desc = "Azure DevOps: status" })
+  -- automatically; `g?` lists them.
+  vim.keymap.set("n", "<leader>q", function()
+    vim.cmd("tabnew")
+    vim.cmd("Azdo")
+  end, { desc = "Azure DevOps: status (new tab)" })
+
+  -- Create a PR from the current branch (prompts for target, then title/body).
+  vim.keymap.set("n", "<leader>Q", "<Plug>(azdo-create)", { desc = "Azure DevOps: create PR" })
 end

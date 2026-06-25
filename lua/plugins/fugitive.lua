@@ -52,4 +52,22 @@ return function()
       vim.opt_local.textwidth = 0
     end,
   })
+  -- After committing, stay in the fugitive status buffer instead of
+  -- landing on whatever window was underneath the commit message.
+  autocmd("BufWinLeave", {
+    group = AaronShahriari,
+    pattern = "*/COMMIT_EDITMSG",
+    callback = function()
+      vim.schedule(function()
+        for _, win in ipairs(vim.api.nvim_list_wins()) do
+          local buf = vim.api.nvim_win_get_buf(win)
+          if vim.bo[buf].filetype == "fugitive" then
+            vim.api.nvim_set_current_win(win)
+            return
+          end
+        end
+        vim.cmd("Git")
+      end)
+    end,
+  })
 end
