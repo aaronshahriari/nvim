@@ -30,6 +30,9 @@ return function()
   -- Generate helptags so `:help azdo` works (best-effort).
   pcall(vim.cmd, "helptags " .. dir .. "/doc")
 
+  vim.g.azdo_base_url = "https://tfs.rjf.com/tfs/RJ_Git_Collection"
+  vim.g.azdo_project  = "KnowledgebasePlatform" -- one-part form, on-prem
+
   -- Entry point: `:Azdo` (status), `:Azdo <id|url|sha>`. In-buffer maps are set
   -- automatically; `g?` lists them.
   vim.keymap.set("n", "<leader>q", function()

@@ -18,7 +18,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "dblite.nvim": {
-      "rev": "c279b3163d6877e06d1968aa715966bf504090a6",
+      "rev": "a7e26e63b4cf261a286a8c4b162be02bf5cb2c86",
       "src": "https://github.com/aaronshahriari/dblite.nvim"
     },
     "diffs.nvim": {
