@@ -30,8 +30,29 @@ return function()
   -- Generate helptags so `:help azdo` works (best-effort).
   pcall(vim.cmd, "helptags " .. dir .. "/doc")
 
-  vim.g.azdo_base_url = "https://tfs.rjf.com/tfs/RJ_Git_Collection"
-  vim.g.azdo_project  = "KnowledgebasePlatform" -- one-part form, on-prem
+  vim.g.azdo_base_url          = "https://tfs.rjf.com/tfs/RJ_Git_Collection"
+  vim.g.azdo_project           = "KnowledgebasePlatform" -- one-part form, on-prem
+
+  -- RJ-specific custom work-item fields. These used to be azdo.nvim's shipped
+  -- defaults, but they're org-private (RaymondJames.ALM.*), so they live here now.
+  local rj_extra               = {
+    { "Technical Analysis", "RaymondJames.ALM.TechnicalAnalysis" },
+    { "RJ Comments",        "RaymondJames.ALM.Comments" },
+    { "Business Impact",    "RaymondJames.ALM.Impact" },
+  }
+  vim.g.azdo_workitem_sections = {
+    default = {
+      { "Description",         "System.Description" },
+      { "Acceptance Criteria", "Microsoft.VSTS.Common.AcceptanceCriteria" },
+      rj_extra[1], rj_extra[2], rj_extra[3],
+    },
+    Bug = {
+      { "Repro Steps",         "Microsoft.VSTS.TCM.ReproSteps" },
+      { "System Info",         "Microsoft.VSTS.TCM.SystemInfo" },
+      { "Acceptance Criteria", "Microsoft.VSTS.Common.AcceptanceCriteria" },
+      rj_extra[1], rj_extra[2], rj_extra[3],
+    },
+  }
 
   -- Entry point: `:Azdo` (status), `:Azdo <id|url|sha>`. In-buffer maps are set
   -- automatically; `g?` lists them.
@@ -42,4 +63,7 @@ return function()
 
   -- Create a PR from the current branch (prompts for target, then title/body).
   vim.keymap.set("n", "<leader>Q", "<Plug>(azdo-create)", { desc = "Azure DevOps: create PR" })
+
+  -- azdo menu picker
+  vim.keymap.set('n', '<leader>w', '<Plug>(azdo-menu)')
 end
