@@ -36,9 +36,9 @@ return function()
 
   require("azdo").setup({
     -- On-prem Azure DevOps Server (not cloud dev.azure.com): collection root.
-    base_url = "https://tfs.rjf.com/tfs/RJ_Git_Collection",
-    project  = "KnowledgebasePlatform", -- one-part form, on-prem
-    pat      = keychain_pat(),
+    base_url          = "https://tfs.rjf.com/tfs/RJ_Git_Collection",
+    project           = "KnowledgebasePlatform", -- one-part form, on-prem
+    pat               = keychain_pat(),
 
     workitem_sections = {
       default = {
@@ -54,15 +54,29 @@ return function()
       },
     },
 
-    -- Command palette on <leader>w (sets the mapping for me).
-    menu = "<leader>w",
+    -- configurations
+    items             = {
+      split     = 'vertical', -- or 'horizontal'
+      size      = nil,        -- 1-99 percent of editor; nil = even split
+      sort      = 'state',    -- default dashboard sort
+      fold      = { 'Done' }, -- start the Done group collapsed; everything else open
+      group     = true,       -- group under subheadings (default true)
+      assignee  = 'me',       -- default: items assigned to you (@Me)
+      assignees = { 'Peer Boerner', 'Alexandru Berezovschi', 'Ted Ryder', 'Vicky Chandwani' },
+    },
+    pr                = {
+      comments = { width = 30 }, -- PR diff/comments split: comments pane width %
+    },
   })
 
-  -- Status in a new tab.
-  vim.keymap.set("n", "<leader>q", function()
-    vim.cmd("tabnew")
-    vim.cmd("Azdo")
-  end, { desc = "Azure DevOps: status (new tab)" })
+  -- Menu in a new tab. The `tab` mod is forwarded to the chosen dashboard, so
+  -- the tab is created only when you pick something — cancelling leaves no tab.
+  vim.keymap.set("n", "<leader>w", "<cmd>tab AzdoMenu<cr>",
+    { desc = "Azure DevOps: menu (new tab)" })
+
+  -- Status in a new tab. `:Azdo` creates the tab lazily, when it opens content.
+  vim.keymap.set("n", "<leader>q", "<cmd>tab Azdo<cr>",
+    { desc = "Azure DevOps: status (new tab)" })
 
   -- Create a PR from the current branch (prompts for target, then title/body).
   vim.keymap.set("n", "<leader>Q", "<Plug>(azdo-create)", { desc = "Azure DevOps: create PR" })

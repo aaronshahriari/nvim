@@ -110,7 +110,7 @@ return function()
       checked = {
         icon = ' ',
         highlight = 'RenderMarkdownChecked',
-        scope_highlight = '@markup.strikethrough',
+        -- scope_highlight = '@markup.strikethrough',
       },
       custom = {
         pending = {

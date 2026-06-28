@@ -27,17 +27,13 @@ return function()
     max_rows          = 10000,
     max_col_width     = 50,
     binds_split       = {
-      style  = 'float', -- 'vertical' | 'horizontal'
-      width  = 80,      -- columns; used when split_dir = 'vertical'. 0 = let nvim decide.
-      height = 30,      -- rows; used when split_dir = 'horizontal'. 0 = let nvim decide.
+      style  = 'float',
+      width  = 80,
+      height = 30,
     },
     style             = {
       dbout = {
-        cursorline = false, -- highlight the line under the cursor
-        -- Status line sections. Each entry: { "item", sep = "…", hl = "HlGroup" }
-        -- Available items: "pagination" | "query_time" | "connection"
-        -- sep   — separator printed before this item (default "  ·  ")
-        -- hl    — highlight group applied to this item's text (optional)
+        cursorline = false,
         sections = {
           { "pagination" },
           { "query_time", sep = " · " },
@@ -45,7 +41,7 @@ return function()
         },
       },
     },
-    connection_picker = 'telescope', -- other opt: panel
+    connection_picker = 'telescope',
     telescope_picker  = {
       preview       = true,
       width         = 0.5,
@@ -54,20 +50,20 @@ return function()
     },
     keymaps           = {
       dbout = { next = "L", prev = "H", cancel = "<C-c>" },
-      editor = { binds = false },
+      editor = { filetypes = {} },
     },
   })
-  vim.keymap.set("n", "<leader>s", dblite.execute)
-  vim.keymap.set("n", "<leader>e", dblite.toggle_panel)
-  vim.keymap.set("n", "<leader>h", dblite.toggle_dbout)
-  vim.keymap.set("n", "<leader>b", dblite.edit_binds)
+
+  -- all dblite keymaps live only in sql buffers
   vim.api.nvim_create_autocmd("FileType", {
     pattern  = "sql",
     callback = function()
-      vim.keymap.set("n", "<CR>", dblite.execute_at_cursor, {
-        buffer = true,
-        desc = "dblite: run query at cursor",
-      })
-    end
+      local opts = { buffer = true }
+      vim.keymap.set("n", "<leader>s", dblite.execute, opts)
+      vim.keymap.set("n", "<leader>e", dblite.toggle_panel, opts)
+      vim.keymap.set("n", "<leader>h", dblite.toggle_dbout, opts)
+      vim.keymap.set("n", "<leader>b", dblite.edit_binds, opts)
+      vim.keymap.set("n", "<CR>", dblite.execute_at_cursor, opts)
+    end,
   })
 end
