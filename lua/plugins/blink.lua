@@ -8,10 +8,11 @@ return function()
     sources = {
       default = { "lsp", "path", "snippets" },
       per_filetype = {
-        sql = { "snippets", "dadbod", "buffer" },
+        sql = { "dblite" },
       },
       providers = {
-        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+        dblite = { module = 'dblite.blink', name = 'dblite' },
+        -- dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
       },
     },
     keymap = { preset = "default" },
