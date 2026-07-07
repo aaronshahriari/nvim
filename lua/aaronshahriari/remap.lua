@@ -4,6 +4,15 @@ vim.g.mapleader = " "
 vim.g.netrw_bufsettings = "noma nomod nu nowrap ro nobl"
 vim.cmd("autocmd FileType netrw set nu")
 
+-- prior commands
+vim.keymap.set("n", "<leader>;", function()
+  if vim.bo.buftype == "nofile" and vim.bo.filetype == "vim" then
+    vim.cmd("quit")
+  else
+    vim.fn.feedkeys("q:", "n")
+  end
+end)
+
 -- mapping to conform current buffer
 vim.keymap.set("n", "<leader>f", function()
   require("conform").format({ bufnr = 0 })

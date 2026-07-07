@@ -11,7 +11,6 @@ return function()
 
   vim.pack.add({
     { src = "https://github.com/aaronshahriari/dblite.nvim" },
-    -- { src = "git@git_personal:aaronshahriari/dblite" },
   })
 
   pcall(function()
