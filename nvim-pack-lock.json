@@ -107,7 +107,7 @@
       "src": "https://github.com/tpope/vim-surround"
     },
     "yt.nvim": {
-      "rev": "14cdf150373afa5de9304df2ef3ed6e9349606d5",
+      "rev": "19b6eb32ba6be00cde5c3ca4c522f4084593696b",
       "src": "https://github.com/aaronshahriari/yt.nvim"
     }
   }

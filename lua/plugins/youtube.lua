@@ -15,8 +15,18 @@ return function()
   require("yt").setup({
     per_page = 10,                                               -- results shown per page
     max_pages = 5,                                               -- max pages fetched (total = per_page × max_pages)
-    keymaps = { page_next = "L", page_prev = "H" },              -- set to false to drop
     player = { cmd = { "mpv", "--save-position-on-quit=yes" } }, -- video URL appended
-    results_side = "right"
+    results_side = "right",
+    icons = {
+      installed = "", -- marker for a downloaded video
+      downloading = "", -- marker shown while a download runs
+    },
+    home = {
+      sections  = { "recent", "pinned", "playlists", "installed" },
+      recent    = { limit = 5 },
+      pinned    = { limit = 5 },
+      installed = { limit = 5 },
+      playlists = { limit = 5, items = 5 }, -- 5 playlists, 5 videos per expanded one
+    },
   })
 end
