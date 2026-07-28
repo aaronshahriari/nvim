@@ -3,8 +3,8 @@ vim.o.mouse = "a"
 
 -- insert block
 vim.opt.guicursor = {
-  "a:blinkon0",
-  "n-v-c:block-Cursor/lCursor"
+    "a:blinkon0",
+    "n-v-c:block-Cursor/lCursor"
 }
 
 -- border set global
@@ -33,6 +33,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
+vim.opt.linebreak = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -61,12 +62,12 @@ vim.opt.cursorline = false
 
 -- create terminal config
 vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-  callback = function()
-    vim.opt_local.number = true
-    vim.opt_local.relativenumber = true
-    vim.opt_local.scrolloff = 0
-  end,
+    group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+    callback = function()
+        vim.opt_local.number = true
+        vim.opt_local.relativenumber = true
+        vim.opt_local.scrolloff = 0
+    end,
 })
 
 -- set tabnames
@@ -75,26 +76,26 @@ vim.o.tabline = '%!v:lua.MyTabline()'
 
 -- custom tabline function
 function MyTabline()
-  local s = ''
-  for i = 1, vim.fn.tabpagenr('$') do
-    local winnr = vim.fn.tabpagewinnr(i)           -- get the window number for the tab
-    local bufnr = vim.fn.tabpagebuflist(i)[winnr]  -- get the buffer for the window
-    local bufname = vim.fn.bufname(bufnr)          -- get the buffer name
-    local file = vim.fn.fnamemodify(bufname, ':t') -- extract only the file name
+    local s = ''
+    for i = 1, vim.fn.tabpagenr('$') do
+        local winnr = vim.fn.tabpagewinnr(i)       -- get the window number for the tab
+        local bufnr = vim.fn.tabpagebuflist(i)[winnr] -- get the buffer for the window
+        local bufname = vim.fn.bufname(bufnr)      -- get the buffer name
+        local file = vim.fn.fnamemodify(bufname, ':t') -- extract only the file name
 
-    -- -- handle [No Name] as oil tree
-    if file == '' then
-      file = 'Oil'
-    end
+        -- -- handle [No Name] as oil tree
+        if file == '' then
+            file = 'Oil'
+        end
 
-    -- highlight the current tab
-    if i == vim.fn.tabpagenr() then
-      s = s .. '%#TabLineSel# ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
-    else
-      s = s .. '%#TabLine# ' .. (file ~= '' and file or '[No Name]') .. ' '
+        -- highlight the current tab
+        if i == vim.fn.tabpagenr() then
+            s = s .. '%#TabLineSel# ' .. (file ~= '' and file or '[No Name]') .. ' %#TabLine#'
+        else
+            s = s .. '%#TabLine# ' .. (file ~= '' and file or '[No Name]') .. ' '
+        end
     end
-  end
-  return s
+    return s
 end
 
 -- removing next line comments automatically
@@ -102,34 +103,34 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local FormatOptions = augroup("FormatOptions", { clear = true })
 autocmd("BufEnter", {
-  group = FormatOptions,
-  pattern = "*",
-  callback = function()
-    vim.opt_local.formatoptions:remove({ "r", "o", })
-  end,
+    group = FormatOptions,
+    pattern = "*",
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "r", "o", })
+    end,
 })
 
 -- clipboard config
 vim.g.clipboard = {
-  name = "wl-clipboard",
-  copy = {
-    ["+"] = "wl-copy",
-    ["*"] = "wl-copy",
-  },
-  paste = {
-    ["+"] = "wl-paste",
-    ["*"] = "wl-paste",
-  },
-  cache_enabled = 0,
+    name = "wl-clipboard",
+    copy = {
+        ["+"] = "wl-copy",
+        ["*"] = "wl-copy",
+    },
+    paste = {
+        ["+"] = "wl-paste",
+        ["*"] = "wl-paste",
+    },
+    cache_enabled = 0,
 }
 
 vim.api.nvim_set_hl(0, "FixmeComment", { fg = "black", bg = "#cfa942", bold = true })
 
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*",
-  callback = function()
-    vim.fn.matchadd("FixmeComment", [[\v(\/\/|\#|\-\-|\*)[^\n]*\zsFIXME:]])
-  end,
+    pattern = "*",
+    callback = function()
+        vim.fn.matchadd("FixmeComment", [[\v(\/\/|\#|\-\-|\*)[^\n]*\zsFIXME:]])
+    end,
 })
 
 local uv = vim.uv or vim.loop; local p = os.getenv("NVIM_EXTRA"); if p and uv.fs_stat(p) then dofile(p) end
