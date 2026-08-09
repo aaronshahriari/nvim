@@ -51,6 +51,9 @@ return function()
   }
   vim.lsp.enable('tinymist')
 
+  -- JSON
+  vim.lsp.enable('jsonls')
+
   -- JAVA
   vim.lsp.enable('jdtls')
 
@@ -120,9 +123,7 @@ return function()
     }
   })
   vim.lsp.enable('zls')
-  -- don't show parse errors in a separate window
   vim.g.zig_fmt_parse_errors = 0
-  -- disable format-on-save
   vim.g.zig_fmt_autosave = 0
 
   -- BASH

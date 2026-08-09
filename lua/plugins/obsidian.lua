@@ -7,6 +7,9 @@ return function()
   local personal_vault = "~/vaults/vault_personal"
   local obs = require("obsidian")
   obs.setup({
+    sync = {
+      enabled = true
+    },
     attachments = {
       folder = "/attachments",
     },
