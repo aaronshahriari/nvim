@@ -17,6 +17,10 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "dblite": {
+      "rev": "b0c4c79f0c23c99c765a1028bc86022a98406ab8",
+      "src": "git@git_personal:aaronshahriari/dblite"
+    },
     "dblite.nvim": {
       "rev": "2870f6b66bef6aeafbe4306530ad97387569719d",
       "src": "https://github.com/aaronshahriari/dblite.nvim"
