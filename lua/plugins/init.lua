@@ -4,7 +4,7 @@ require("plugins.blink")()
 require("plugins.catppuccin")()
 require("plugins.cloak")()
 require("plugins.conform")()
-require("plugins.image")()
+-- require("plugins.image")()
 -- require("plugins.copilot")() --work
 require("plugins.dadbod")()
 -- require("plugins.dap-view")() -- work

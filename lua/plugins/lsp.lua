@@ -33,14 +33,27 @@ return function()
   })
 
   -- QUICKSHELL
-  local qs_path = vim.fn.exepath('quickshell')
-  if qs_path ~= '' then
-    local qs_prefix = vim.fn.resolve(qs_path):match('(.*)/bin/quickshell$')
-    vim.lsp.config('qmlls', {
-      cmd = { 'qmlls', '-I', qs_prefix .. '/lib/qt-6/qml' },
-    })
+  -- Arch ships the QML language server as `qmlls6`, most others as `qmlls`.
+  local qmlls_bin = vim.fn.exepath('qmlls6')
+  if qmlls_bin == '' then
+    qmlls_bin = vim.fn.exepath('qmlls')
   end
-  vim.lsp.enable('qmlls')
+  if qmlls_bin ~= '' then
+    local cmd = { qmlls_bin }
+    local qs_path = vim.fn.exepath('quickshell')
+    local qs_prefix = qs_path ~= '' and vim.fn.resolve(qs_path):match('(.*)/bin/quickshell$')
+    if qs_prefix then
+      -- Qt's qml dir is `lib/qt6/qml` on Arch, `lib/qt-6/qml` on Nix
+      for _, dir in ipairs({ '/lib/qt6/qml', '/lib/qt-6/qml' }) do
+        if vim.uv.fs_stat(qs_prefix .. dir .. '/Quickshell') then
+          vim.list_extend(cmd, { '-I', qs_prefix .. dir })
+          break
+        end
+      end
+    end
+    vim.lsp.config('qmlls', { cmd = cmd })
+    vim.lsp.enable('qmlls')
+  end
 
   -- TYPST
   vim.lsp.config["tinymist"] = {
@@ -81,7 +94,7 @@ return function()
   vim.lsp.enable('ruby_lsp')
 
   -- TYPST
-  vim.lsp.enable('typst_lsp')
+  -- vim.lsp.enable('typst_lsp')
 
   -- GO
   vim.lsp.enable("gopls")
