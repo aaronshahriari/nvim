@@ -14,6 +14,7 @@ return function()
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
       rust = { "rustfmt" },
+      json = { "jsonls" },
     },
   }
 
