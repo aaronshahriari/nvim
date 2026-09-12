@@ -15,7 +15,7 @@ require("plugins.dblite")()
 require("plugins.fugitive")()
 require("plugins.harpoon")()
 require("plugins.hlsearch")()
--- require("plugins.kulala")() -- work
+require("plugins.kulala")()
 require("plugins.lsp")()
 require("plugins.lualine")()
 require("plugins.luasnip")()

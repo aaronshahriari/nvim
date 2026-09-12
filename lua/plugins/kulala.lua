@@ -54,7 +54,7 @@ return function()
     },
   })
 
-  vim.keymap.set("n", "<leader>r", function()
+  vim.keymap.set("n", "<leader>e", function()
     kl.set_selected_env()
   end, { desc = "Set environment" })
 end

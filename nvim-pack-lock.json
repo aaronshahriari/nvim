@@ -42,6 +42,10 @@
       "rev": "88351f1f7d9dbae286e671ce3690a49660dd8a5c",
       "src": "https://github.com/3rd/image.nvim"
     },
+    "kulala.nvim": {
+      "rev": "dcad056448773ae5b54cadbfdbd188a599cfebd3",
+      "src": "https://github.com/mistweaverco/kulala.nvim"
+    },
     "lualine.nvim": {
       "rev": "221ce6b2d999187044529f49da6554a92f740a96",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
