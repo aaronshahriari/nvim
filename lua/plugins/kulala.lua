@@ -3,24 +3,17 @@ return function()
     { src = "https://github.com/mistweaverco/kulala.nvim" },
   })
 
+  -- .http is detected natively by nvim; .rest and *.http.* are not.
+  -- Treesitter registration and highlighting are owned by kulala itself
+  -- (it registers the "kulala_http" parser for both filetypes) -- do not
+  -- duplicate it here.
   vim.filetype.add({
     extension = {
-      http = "http",
       rest = "http",
     },
     pattern = {
       [".*%.http%..*"] = "http",
     },
-  })
-
-  pcall(vim.treesitter.language.register, "http", "rest")
-
-  vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("kulala-http-treesitter", { clear = true }),
-    pattern = { "http", "rest" },
-    callback = function(args)
-      pcall(vim.treesitter.start, args.buf, "http")
-    end,
   })
 
   local kl = require("kulala")
