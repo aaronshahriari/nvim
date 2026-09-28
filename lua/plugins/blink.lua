@@ -9,9 +9,11 @@ return function()
       default = { "lsp", "path", "snippets" },
       per_filetype = {
         sql = { "dblite" },
+        http = { "curlite", "path", "buffer" },
       },
       providers = {
         dblite = { module = 'dblite.blink', name = 'dblite' },
+        curlite = { module = 'curlite.blink', name = 'curlite' },
         -- dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
       },
     },
