@@ -9,17 +9,9 @@ return function()
     end,
   })
 
-  -- A local checkout wins when it is present, so the working tree is what
-  -- loads and `bin/dblite` there is the binary that runs. Delete or rename the
-  -- directory and this falls back to the pinned release with no edit needed.
-  local dev = vim.fn.expand("~/personal/projects/dblite.nvim")
-  if vim.fn.isdirectory(dev) == 1 then
-    vim.opt.runtimepath:prepend(dev)
-  else
-    vim.pack.add({
-      { src = "https://github.com/aaronshahriari/dblite.nvim", version = "v0.7.2" },
-    })
-  end
+  vim.pack.add({
+    { src = "https://github.com/aaronshahriari/dblite.nvim", version = "v0.6.2" },
+  })
 
   pcall(function()
     require("dblite.download").ensure_binary()
@@ -48,22 +40,6 @@ return function()
         },
       },
     },
-    -- Per-connection-type overrides. Redis and SQL want different windows: a
-    -- JSON document reads better in a tall right-hand pane, a result grid in a
-    -- short wide one. Anything absent here falls through to the defaults above.
-    types             = {
-      redis = {
-        split_dir  = "right",
-        split_size = { width = 0.5 }, -- half the terminal, whatever its width
-        -- Pin commands whose rendering should not be left to detection.
-        -- JSON.GET always returns a document, so it is always JSON.
-        output     = {
-          commands = {
-            ["JSON.GET"] = "json",
-          },
-        },
-      },
-    },
     connection_picker = 'telescope',
     telescope_picker  = {
       preview       = true,
@@ -77,9 +53,9 @@ return function()
     },
   })
 
-  -- dblite keymaps live only in the buffers it queries from
+  -- all dblite keymaps live only in sql buffers
   vim.api.nvim_create_autocmd("FileType", {
-    pattern  = { "sql", "redis" },
+    pattern  = "sql",
     callback = function()
       local opts = { buffer = true }
       vim.keymap.set("n", "<leader>s", dblite.execute, opts)
