@@ -55,10 +55,10 @@ vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end)
 vim.keymap.set("n", "<C-x>", ":Telescope diagnostics<CR>")
 
 -- Map to change split size
-vim.keymap.set("n", "<C-Left>", "<C-w>10<")
-vim.keymap.set("n", "<C-Right>", "<C-w>10>")
-vim.keymap.set("n", "<C-Down>", "<C-w>10+")
-vim.keymap.set("n", "<C-Up>", "<C-w>10-")
+vim.keymap.set("n", "<C-Left>", "<C-w>2<")
+vim.keymap.set("n", "<C-Right>", "<C-w>2>")
+vim.keymap.set("n", "<C-Down>", "<C-w>2+")
+vim.keymap.set("n", "<C-Up>", "<C-w>2-")
 
 -- create splits
 vim.keymap.set("n", "<leader>1", "<C-w>v")

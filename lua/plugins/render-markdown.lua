@@ -117,5 +117,10 @@ return function()
         },
       },
     },
+    inline_highlight = {
+      custom = {
+        underline = { prefix = '_', highlight = 'Underlined' },
+      }
+    }
   })
 end
